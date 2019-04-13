@@ -37,34 +37,35 @@
             Table Reservation
           </div>
           <div class="card-body">
-            <form role="form">
+            <form class="was-validated" novalidate="">
 
               <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name">
+                <input type="text" class="form-control" id="name" required ="true">
               </div>
 
               <div class="form-group">
                 <label for="role">Phone Number</label>
-                <input type="tel" class="form-control" id="phone">
+                <input type="tel" class="form-control" id="phone" required>
               </div>
 
               <div class="form-group">
                 <label for="age">Email</label>
-                <input type="email" class="form-control" id="email">
+                <input type="email" class="form-control" id="email" required>
               </div>
 
               <div class="form-group">
                 <label for="force-points">Unique ID</label>
-                <input type="text" class="form-control" id="uniqueid">
+                <input type="text" class="form-control" id="uniqueid" required>
               </div>
 
-            </form>
+           
             <br>
             <div class="text-right">
               <button type="submit" class="btn btn-primary btn-md" id="submit-btn">
                 <span class="fa fa-fire"></span> Submit</button>
             </div>
+          </form>
           </div>
         </div>
 
@@ -77,15 +78,15 @@
     $("#submit-btn").on("click", function (event) {
       event.preventDefault();
 
-      if ($("#name").val().trim() === "" ||
-        $("#phone").val().trim() === "" ||
-        $("#email").val().trim() === "" ||
-        $("#uniqueid").val().trim() === "") {
+      // if ($("#name").val().trim() === "" ||
+      //   $("#phone").val().trim() === "" ||
+      //   $("#email").val().trim() === "" ||
+      //   $("#uniqueid").val().trim() === "") {
 
-        alert("Please fill out the entire form");
-      }
+      //   alert("Please fill out the entire form");
+      // }
 
-      else {
+      // else {
 
         var newReservation = {
           name: $("#name").val().trim(),
@@ -111,7 +112,7 @@
               alert("Sorry, you are on the waitlist");
             }
           });
-      }
+     // }
     });
 
   </script>
