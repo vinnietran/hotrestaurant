@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Star Wars - Express</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Hot Restaurant</h1>
+      <h3>We only have 5 table book your seat until they are all gone!</h3>
+      <hr>
+      <a href="/tables"><button class="btn btn-primary btn-lg"><span class="fa fa-eye"></span> View Tables</button></a>
+      <a href="/reservations"><button class="btn btn-danger btn-lg"><span class="fa fa-credit-card"></span> Make Reservation</button></a>
+    </div>
+
+
+      <div class="row">
+          <a href="./api/reservations"> API Table Link</a> 
+           <span> | </span>
+          <a href="./api/waiting-list"> API Wait List</a>
+
+      </div>
+    <script type="text/javascript">
+
+      $.get("/api/waiting-list", function(data) {
+        for (var i = 0; i < data.length; i++) {
+          console.log(data[i]);
+          var listGroupItem = $("<li class='list-group-item'>");
+
+          listGroupItem.append($("<h2>").text("Name: " + data[i].name));
+          listGroupItem.append($("<h3>").text("Phone Number: " + data[i].phone));
+          listGroupItem.append($("<h3>").text("Email: " + data[i].email));
+          listGroupItem.append($("<h3>").text("Unique ID: " + data[i].uniqueId));
+
+          $("#waiting-list").append(listGroupItem);
+        }
+      });
+
+      $.get("/api/reservations", function(data) {
+        for (var i = 0; i < data.length; i++) {
+          console.log(data[i]);
+          var listGroupItem = $("<li class='list-group-item'>");
+
+          listGroupItem.append($("<h2>").text("Name: " + data[i].name));
+          listGroupItem.append($("<h3>").text("Phone Number: " + data[i].phone));
+          listGroupItem.append($("<h3>").text("Email: " + data[i].email));
+          listGroupItem.append($("<h3>").text("Unique ID: " + data[i].uniqueId));
+
+          $("#reservations").append(listGroupItem);
+        }
+      });
+
+
+
+    </script>
+
+</body>
+
+</html>
